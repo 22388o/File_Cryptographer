@@ -14,7 +14,7 @@ with this program, you can encrypt & decrypt your files with private keys that o
 so your important files are secure  
 
 ### **Features:**
-- Generate keys in program easily
+- Generate keys in the program easily
 - Encrypted files only decrypt with the same Key that encrypted
 
 ### Requirements:
