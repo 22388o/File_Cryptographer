@@ -10,11 +10,11 @@
 - [See Also](#see-also)
 
 ## **About the Program:**
-with this program, you can encrypt & decrypt your files with private keys that only decrypt with the same key that encrypted,<br> 
+with this program, you can encrypt & decrypt your files with private external keys that only decrypt with the same key that encrypted,<br> 
 so your important files are secure  
 
 ### **Features:**
-- Generate keys in the program easily
+- Generate external keys in the program easily
 - Encrypted files only decrypt with the same Key that encrypted
 
 ### Requirements:
