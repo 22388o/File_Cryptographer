@@ -13,9 +13,7 @@ class AboutDialog(QtWidgets.QDialog):
         self.setupUi()
 
     def setupUi(self):
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("files/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.setWindowIcon(icon)
+        self.setWindowIcon(QtGui.QIcon(r"files/icon.ico"))
         self.setFixedSize(300, 100)
         self.setWindowTitle("About us")
 
@@ -45,6 +43,7 @@ class AboutDialog(QtWidgets.QDialog):
         horizontalLayout.addWidget(btn_github)
         horizontalLayout.addWidget(btn_instagram)
         horizontalLayout.addWidget(btn_telegram)
+
 
 
 class Cryptographer:
