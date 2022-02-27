@@ -4,7 +4,7 @@ import random
 import string
 import sys
 from itertools import cycle
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class AboutDialog(QtWidgets.QDialog):
@@ -19,7 +19,7 @@ class AboutDialog(QtWidgets.QDialog):
 
         discription = QtWidgets.QLabel(self)
         discription.setGeometry(75, 10, 150, 30)
-        discription.setAlignment(QtCore.Qt.AlignCenter)
+        discription.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         discription.setText("This program made by Sina.f")
 
         horizontalLayoutWidget = QtWidgets.QWidget(self)
@@ -133,7 +133,7 @@ class Widget(QtWidgets.QMainWindow):
         self.file_path_line_encoder_tab = QtWidgets.QLineEdit(encoderTab)
         self.file_path_line_encoder_tab.setGeometry(10, 20, 261, 31)
         self.file_path_line_encoder_tab.setFont(lineEdit_font)
-        self.file_path_line_encoder_tab.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.file_path_line_encoder_tab.setFocusPolicy(QtCore.Qt.FocusPolicy.ClickFocus)
         self.file_path_line_encoder_tab.setReadOnly(True)
         self.file_path_line_encoder_tab.setPlaceholderText("file path")
 
@@ -153,7 +153,7 @@ class Widget(QtWidgets.QMainWindow):
         self.file_path_line_decoder_tab = QtWidgets.QLineEdit(decoderTab)
         self.file_path_line_decoder_tab.setGeometry(10, 20, 261, 31)
         self.file_path_line_decoder_tab.setFont(lineEdit_font)
-        self.file_path_line_decoder_tab.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.file_path_line_decoder_tab.setFocusPolicy(QtCore.Qt.FocusPolicy.ClickFocus)
         self.file_path_line_decoder_tab.setReadOnly(True)
         self.file_path_line_decoder_tab.setPlaceholderText("file path")
 
@@ -225,11 +225,11 @@ class Widget(QtWidgets.QMainWindow):
             self.file_path_line_decoder_tab.setText(file_path)
 
     def init_menu(self):
-        helpAction = QtWidgets.QAction('Help', self)
+        helpAction = QtGui.QAction("Help", self)
         helpAction.triggered.connect(lambda: QtWidgets.QMessageBox.information(self, 'Help', help_msg))
 
-        aboutAction = QtWidgets.QAction('About us', self)
-        aboutAction.triggered.connect(lambda: self.aboutDialog.exec_())
+        aboutAction = QtGui.QAction("About us", self)
+        aboutAction.triggered.connect(lambda: self.aboutDialog.exec())
 
         menu = self.menuBar()
         menu.addAction(helpAction)
@@ -245,7 +245,7 @@ help_msg = '''
 
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
+    app = QtWidgets.QApplication([])
     widget = Widget()
     widget.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())

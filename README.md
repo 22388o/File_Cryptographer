@@ -18,7 +18,7 @@ so your important files are secure
 - Encrypted files only decrypt with the same Key that encrypted
 
 ### Requirements:
-- PyQt5 `pip install PyQt5`
+- PyQt6 `pip install PyQt6`
 
 ### **Preview:** 
 ![preview](/Files/preview.png)
