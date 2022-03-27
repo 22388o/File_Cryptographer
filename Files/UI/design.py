@@ -104,14 +104,20 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "File Encoder"))
         self.pushButton_7.setText(_translate("MainWindow", "Open file"))
         self.pushButton_8.setText(_translate("MainWindow", "Encode"))
-        self.lineEdit_3.setPlaceholderText(_translate("MainWindow", "file path"))
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.encoder_2), _translate("MainWindow", "Encoder"))
-        self.tabWidget_2.setTabToolTip(self.tabWidget_2.indexOf(self.encoder_2), _translate("MainWindow", "<html><head/><body><p>You can encode your file here</p></body></html>"))
+        self.lineEdit_3.setPlaceholderText(
+            _translate("MainWindow", "file path"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(
+            self.encoder_2), _translate("MainWindow", "Encoder"))
+        self.tabWidget_2.setTabToolTip(self.tabWidget_2.indexOf(self.encoder_2), _translate(
+            "MainWindow", "<html><head/><body><p>You can encode your file here</p></body></html>"))
         self.pushButton_9.setText(_translate("MainWindow", "Open file"))
         self.pushButton_10.setText(_translate("MainWindow", "Decode"))
-        self.lineEdit_4.setPlaceholderText(_translate("MainWindow", "file path"))
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.decoder_2), _translate("MainWindow", "Decoder"))
-        self.tabWidget_2.setTabToolTip(self.tabWidget_2.indexOf(self.decoder_2), _translate("MainWindow", "<html><head/><body><p>You can decode your file here</p></body></html>"))
+        self.lineEdit_4.setPlaceholderText(
+            _translate("MainWindow", "file path"))
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(
+            self.decoder_2), _translate("MainWindow", "Decoder"))
+        self.tabWidget_2.setTabToolTip(self.tabWidget_2.indexOf(self.decoder_2), _translate(
+            "MainWindow", "<html><head/><body><p>You can decode your file here</p></body></html>"))
         self.pushButton_2.setText(_translate("MainWindow", "Load KEY"))
         self.pushButton.setText(_translate("MainWindow", "Generate KEY"))
         self.label.setText(_translate("MainWindow", "Key: "))
