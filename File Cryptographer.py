@@ -15,7 +15,7 @@ class AboutDialog(QDialog):
         self.setupUi()
 
     def setupUi(self):
-        self.setWindowIcon(QIcon(r"files/icon.ico"))
+        self.setWindowIcon(QIcon(r"Files/icon.ico"))
         self.setFixedSize(300, 100)
         self.setWindowTitle("About us")
 
@@ -32,20 +32,22 @@ class AboutDialog(QDialog):
 
         btn_github = QPushButton(horizontalLayoutWidget)
         btn_github.setText("GitHub")
-        btn_github.clicked.connect(lambda: webbrowser.open('https://github.com/sina-programer'))
+        btn_github.clicked.connect(lambda: webbrowser.open(
+            'https://github.com/sina-programer'))
 
         btn_instagram = QPushButton(horizontalLayoutWidget)
         btn_instagram.setText("Instagram")
-        btn_instagram.clicked.connect(lambda: webbrowser.open('https://www.instagram.com/sina.programer'))
+        btn_instagram.clicked.connect(lambda: webbrowser.open(
+            'https://www.instagram.com/sina.programer'))
 
         btn_telegram = QPushButton(horizontalLayoutWidget)
         btn_telegram.setText("Telegram")
-        btn_telegram.clicked.connect(lambda: webbrowser.open('https://t.me/sina_programer'))
+        btn_telegram.clicked.connect(
+            lambda: webbrowser.open('https://t.me/sina_programer'))
 
         horizontalLayout.addWidget(btn_github)
         horizontalLayout.addWidget(btn_instagram)
         horizontalLayout.addWidget(btn_telegram)
-
 
 
 class Cryptographer:
@@ -60,7 +62,8 @@ class Cryptographer:
 
     @staticmethod
     def generate_key(key_name):
-        strings = string.ascii_letters + string.digits + string.hexdigits + string.ascii_uppercase + string.punctuation
+        strings = string.ascii_letters + string.digits + \
+            string.hexdigits + string.ascii_uppercase + string.punctuation
         key = ''.join(random.sample(strings, 50)).encode()
 
         with open(key_name, 'wb') as keyFile:
@@ -137,7 +140,8 @@ class Widget(QMainWindow):
         self.file_path_line_encoder_tab = QLineEdit(encoderTab)
         self.file_path_line_encoder_tab.setGeometry(10, 20, 261, 31)
         self.file_path_line_encoder_tab.setFont(lineEdit_font)
-        self.file_path_line_encoder_tab.setFocusPolicy(Qt.FocusPolicy.ClickFocus)
+        self.file_path_line_encoder_tab.setFocusPolicy(
+            Qt.FocusPolicy.ClickFocus)
         self.file_path_line_encoder_tab.setReadOnly(True)
         self.file_path_line_encoder_tab.setPlaceholderText("file path")
 
@@ -157,17 +161,20 @@ class Widget(QMainWindow):
         self.file_path_line_decoder_tab = QLineEdit(decoderTab)
         self.file_path_line_decoder_tab.setGeometry(10, 20, 261, 31)
         self.file_path_line_decoder_tab.setFont(lineEdit_font)
-        self.file_path_line_decoder_tab.setFocusPolicy(Qt.FocusPolicy.ClickFocus)
+        self.file_path_line_decoder_tab.setFocusPolicy(
+            Qt.FocusPolicy.ClickFocus)
         self.file_path_line_decoder_tab.setReadOnly(True)
         self.file_path_line_decoder_tab.setPlaceholderText("file path")
 
         tabWidget.addTab(encoderTab, encoderTab_icon, '')
         tabWidget.setTabText(tabWidget.indexOf(encoderTab), "Encrypt  ")
-        tabWidget.setTabToolTip(tabWidget.indexOf(encoderTab), "You can encrypt\nyour files here")
+        tabWidget.setTabToolTip(tabWidget.indexOf(
+            encoderTab), "You can encrypt\nyour files here")
 
         tabWidget.addTab(decoderTab, decoderTab_icon, '')
         tabWidget.setTabText(tabWidget.indexOf(decoderTab), "Decrypt   ")
-        tabWidget.setTabToolTip(tabWidget.indexOf(decoderTab), "You can decrypt\nyour files here")
+        tabWidget.setTabToolTip(tabWidget.indexOf(
+            decoderTab), "You can decrypt\nyour files here")
 
         self.init_menu()
 
@@ -176,16 +183,20 @@ class Widget(QMainWindow):
             file_path = self.file_path_line_encoder_tab.text()
 
             if file_path:
-                save_path, _ = QFileDialog.getSaveFileName(self, 'Save Encrypt File', '', "Encrypt Files (*.encrypt)")
+                save_path, _ = QFileDialog.getSaveFileName(
+                    self, 'Save Encrypt File', '', "Encrypt Files (*.encrypt)")
 
                 if save_path:
-                    self.cryptographer.cryptography(file_path, save_path, self.key)
+                    self.cryptographer.cryptography(
+                        file_path, save_path, self.key)
 
             else:
-                QMessageBox.critical(self, 'ERROR', '\nPlease open a file for encrypt!\t\n')
+                QMessageBox.critical(
+                    self, 'ERROR', '\nPlease open a file for encrypt!\t\n')
 
         else:
-            QMessageBox.critical(self, 'ERROR', '\nPlease first load a KEY!\t\n')
+            QMessageBox.critical(
+                self, 'ERROR', '\nPlease first load a KEY!\t\n')
 
     def decrypt(self):
         if self.key:
@@ -195,16 +206,20 @@ class Widget(QMainWindow):
                 save_path, _ = QFileDialog.getSaveFileName()
 
                 if save_path:
-                    self.cryptographer.cryptography(file_path, save_path, self.key)
+                    self.cryptographer.cryptography(
+                        file_path, save_path, self.key)
 
             else:
-                QMessageBox.critical(self, 'ERROR', '\nPlease open a file for decrypt!\t\n')
+                QMessageBox.critical(
+                    self, 'ERROR', '\nPlease open a file for decrypt!\t\n')
 
         else:
-            QMessageBox.critical(self, 'ERROR', '\nPlease first load a KEY!\t\n')
+            QMessageBox.critical(
+                self, 'ERROR', '\nPlease first load a KEY!\t\n')
 
     def load_key(self):
-        key_path, _ = QFileDialog.getOpenFileName(self, 'Open Key File', '', "Key Files (*.key)")
+        key_path, _ = QFileDialog.getOpenFileName(
+            self, 'Open Key File', '', "Key Files (*.key)")
 
         if key_path:
             key_name = os.path.basename(key_path)
@@ -212,7 +227,8 @@ class Widget(QMainWindow):
             self.key = self.cryptographer.load_key(key_path)
 
     def generate_key(self):
-        key_path, _ = QFileDialog.getSaveFileName(self, 'Save Key File', '', "Key Files (*.key)")
+        key_path, _ = QFileDialog.getSaveFileName(
+            self, 'Save Key File', '', "Key Files (*.key)")
 
         if key_path:
             self.cryptographer.generate_key(key_path)
@@ -223,13 +239,15 @@ class Widget(QMainWindow):
             self.file_path_line_encoder_tab.setText(file_path)
 
     def open_decode_file(self):
-        file_path, _ = QFileDialog.getOpenFileName(self, 'Open File', '', "Encrypt Files (*.encrypt)")
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, 'Open File', '', "Encrypt Files (*.encrypt)")
         if file_path:
             self.file_path_line_decoder_tab.setText(file_path)
 
     def init_menu(self):
         helpAction = QAction("Help", self)
-        helpAction.triggered.connect(lambda: QMessageBox.information(self, 'Help', HELP_MESSAGE))
+        helpAction.triggered.connect(
+            lambda: QMessageBox.information(self, 'Help', HELP_MESSAGE))
 
         aboutAction = QAction("About us", self)
         aboutAction.triggered.connect(lambda: self.aboutDialog.exec())
